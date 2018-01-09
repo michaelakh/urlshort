@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Slug:</strong>
+  <%= @url.slug %>
+</p>
+
+<p>
+  <strong>Visits:</strong>
+  <%= @url.visits %>
+</p>
+
+<p>
+  <strong>Snapshot:</strong>
+  <%= @url.snapshot %>
+</p>
+
+<%= link_to 'Edit', edit_url_path(@url) %> |
+<%= link_to 'Back', urls_path %>

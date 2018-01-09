@@ -1,0 +1,32 @@
+<%= form_for(url) do |f| %>
+  <% if url.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(url.errors.count, "error") %> prohibited this url from being saved:</h2>
+
+      <ul>
+      <% url.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :slug %>
+    <%= f.text_field :slug %>
+  </div>
+
+  <div class="field">
+    <%= f.label :visits %>
+    <%= f.text_field :visits %>
+  </div>
+
+  <div class="field">
+    <%= f.label :snapshot %>
+    <%= f.text_field :snapshot %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
