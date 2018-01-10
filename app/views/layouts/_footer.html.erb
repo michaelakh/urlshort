@@ -1,0 +1,38 @@
+<footer class="footer fixed-bottom">
+    <div class='row'>
+        
+        <div class='col-sm-4 footer-list'>
+            <%= link_to "URLSHORT ©", root_path, class: "footer-brand text-muted" %>
+        </div>
+        
+        <div class='col-sm-4 footer-list'>
+            <h1 class='footer-header'>
+                Links
+            </h1>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <%= link_to "Index", urls_path %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to "Contact", '#' %>
+                    </li>
+                </ul>
+        </div>
+        
+        <div class='col-sm-4 footer-list'>
+            
+            <h1 class='footer-header'>
+                Legal
+            </h1>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <%= link_to "Privacy Policy", '#' %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to "Documentation", '#' %>
+                    </li>
+                </ul>
+            
+        </div>   
+    </div>
+</footer>

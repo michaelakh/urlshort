@@ -10,14 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180108094603) do
+ActiveRecord::Schema.define(version: 20180109235634) do
 
   create_table "urls", force: :cascade do |t|
     t.string   "slug"
-    t.string   "visits"
+    t.bigint   "visits",     default: 0
     t.string   "snapshot"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "url"
   end
 
 end

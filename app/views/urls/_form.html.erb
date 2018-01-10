@@ -1,32 +1,34 @@
-<%= form_for(url) do |f| %>
-  <% if url.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(url.errors.count, "error") %> prohibited this url from being saved:</h2>
+<div class='form-url'>
+  <h1 class='form-h'>
+    HARNESS EVERY CLICK, TAP AND SWIPE.
+  </h1>
+  <h2 class='form-h'>
+    Brand, track and optimize every touchpoint with Bitly, the world's leading link management platform. 
+  </h2>
+  <%= form_for(url) do |f| %>
+    <div class='url-short-form'>
+      <% if url.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(url.errors.count, "error") %> prohibited this url from being saved:</h2>
 
-      <ul>
-      <% url.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% url.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
+
+      <div class="field url">
+        <%= f.text_field :url, class: "url-text-field" %>
+      <div class="actions url">
+        <%= f.submit "Shorten Url", class: "btn btn-primary shorten-button" %>
+      </div>
+      </div>
+      <div class='test'>
+
+      </div>
+
+    </div> 
   <% end %>
-
-  <div class="field">
-    <%= f.label :slug %>
-    <%= f.text_field :slug %>
-  </div>
-
-  <div class="field">
-    <%= f.label :visits %>
-    <%= f.text_field :visits %>
-  </div>
-
-  <div class="field">
-    <%= f.label :snapshot %>
-    <%= f.text_field :snapshot %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

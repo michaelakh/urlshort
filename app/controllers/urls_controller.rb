@@ -3,9 +3,7 @@ class UrlsController < ApplicationController
 
   # GET /urls
   # GET /urls.json
-  def home
-      
-  end
+  
   def index
     @urls = Url.all
   end
@@ -20,38 +18,28 @@ class UrlsController < ApplicationController
     @url = Url.new
   end
 
-  # GET /urls/1/edit
-  def edit
-  end
-
   # POST /urls
   # POST /urls.json
   def create
+    #create slug with random 8 length string for url
+    #and add that
+    params['url']['slug'] = "#{request.base_url}/" + [*('a'..'z'),*('A'..'Z'),*(1..9)].shuffle[0,8].join
     @url = Url.new(url_params)
 
     respond_to do |format|
       if @url.save
         format.html { redirect_to @url, notice: 'Url was successfully created.' }
-        format.json { render :show, status: :created, location: @url }
       else
         format.html { render :new }
-        format.json { render json: @url.errors, status: :unprocessable_entity }
       end
     end
   end
-
-  # PATCH/PUT /urls/1
-  # PATCH/PUT /urls/1.json
-  def update
-    respond_to do |format|
-      if @url.update(url_params)
-        format.html { redirect_to @url, notice: 'Url was successfully updated.' }
-        format.json { render :show, status: :ok, location: @url }
-      else
-        format.html { render :edit }
-        format.json { render json: @url.errors, status: :unprocessable_entity }
-      end
-    end
+  
+  def click
+    @url = Url.where("slug" => request.original_url).first
+    @url.visits += 1
+    @url.save
+    redirect_to @url.url
   end
 
   # DELETE /urls/1
@@ -72,6 +60,6 @@ class UrlsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def url_params
-      params.require(:url).permit(:slug, :visits, :snapshot)
+      params.require(:url).permit(:url, :slug) 
     end
 end
