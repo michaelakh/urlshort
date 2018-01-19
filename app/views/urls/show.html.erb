@@ -1,8 +1,10 @@
 <p id="notice"><%= notice %></p>
-<p>
-  <strong>Url:</strong>
-  <%= @url.url %>
-</p>
+<div data-turbolinks="false">
+  <p data-turbolinks="false">
+    <strong>Url:</strong>
+    <%= link_to @url.url, @url.slug %>
+  </p>
+</div>
 <p>
   <strong>Slug:</strong>
   <%= @url.slug %>

@@ -1,25 +1,24 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Urls</h1>
+<h1>Index of Short Urls</h1>
 
 <table>
   <thead>
     <tr>
+      <th>url</th>
       <th>Slug</th>
       <th>Visits</th>
       <th>Snapshot</th>
       <th colspan="3"></th>
     </tr>
   </thead>
-
+<div></div>
   <tbody>
     <% @urls.each do |url| %>
       <tr>
+        <td data-turbolinks="false"><%= link_to url.url, url.slug %></td>
         <td><%= url.slug %></td>
         <td><%= url.visits %></td>
         <td><%= url.snapshot %></td>
         <td><%= link_to 'Show', url %></td>
-        <td><%= link_to 'clic', edit_url_path(url) %></td>
         <td><%= link_to 'Destroy', url, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
