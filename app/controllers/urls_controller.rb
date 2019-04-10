@@ -43,6 +43,7 @@ class UrlsController < ApplicationController
     @url = Url.where("slug" => request.original_url).first
     
     if redirect_to @url.url, status: 301, remote: true
+      @url.visits == nil ? @url.visits = 0 : ''
       @url.visits += 1
       @url.save
     end
