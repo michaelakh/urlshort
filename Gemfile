@@ -80,7 +80,7 @@ gem 'devise'
 gem 'bootstrap'
 
 gem 'jquery-rails'
-# gem "bootstrap-wysihtml5-rails"
+
 # summernote html wysiwyg editor
 gem 'summernote-rails', '~> 0.8.10.0'
 # jquery ui gems

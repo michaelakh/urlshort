@@ -40,12 +40,20 @@ class UrlsController < ApplicationController
   end
   
   def click
+    # Find url model
     @url = Url.where("slug" => request.original_url).first
     
-    if redirect_to @url.url, status: 301, remote: true
-      @url.visits.blank? ? @url.visits = 0 : ''
-      @url.visits += 1
-      @url.save
+    
+    if @url.blank?
+      # If model wasn't found, redirect to error page
+      redirect_to show
+    else
+      # If model was found, track click and redirect
+      if redirect_to @url.url, status: 301, remote: true
+        @url.visits.blank? ? @url.visits = 0 : ''
+        @url.visits += 1
+        @url.save
+      end
     end
   end
 

@@ -3,7 +3,7 @@
     HARNESS EVERY CLICK, TAP AND SWIPE.
   </h1>
   <h2 class='form-h'>
-    Brand, track and optimize every touchpoint with Bitly, the world's leading link management platform. 
+    Brand, track and optimize every touchpoint with Ziggie, the world's leading link management platform. 
   </h2>
   <%= form_for(url) do |f| %>
     <div class='url-short-form'>
@@ -20,7 +20,7 @@
       <% end %>
 
       <div class="field url">
-        <%= f.text_field :url, class: "url-text-field" %>
+        <%= f.text_field :url, class: "url-text-field", placeholder:capitalize_all('shorten your link')%>
       <div class="actions url">
         <%= f.submit "Shorten Url", class: "btn btn-primary shorten-button" %>
       </div>
