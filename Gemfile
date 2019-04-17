@@ -119,6 +119,10 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'mini_racer'
+  gem 'rspec-rails', '~> 3.8'
+  gem 'guard-rspec', require: false
+
+  gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 end
 
 group :development do

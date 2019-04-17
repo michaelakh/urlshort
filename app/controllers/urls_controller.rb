@@ -1,5 +1,5 @@
 class UrlsController < ApplicationController
-  before_action :set_url, only: [:show, :destroy]
+  before_action :set_url, only: [:show, :destroy, :edit, :update]
 
   # GET /urls
   # GET /urls.json
@@ -17,6 +17,9 @@ class UrlsController < ApplicationController
   def new
     @url = Url.new
   end
+  
+  def edit
+  end
 
   # POST /urls
   # POST /urls.json
@@ -27,11 +30,46 @@ class UrlsController < ApplicationController
     
     #create slug with random 8 length string for url
     #and add that to the end if the base url
-    params['url']['slug'] = "#{request.base_url}/" + [*('a'..'z'),*('A'..'Z'),*(1..9)].shuffle[0,8].join
-    @url = Url.new(url_params)
-
+    slug = "#{request.base_url}/" + [*('a'..'z'),*('A'..'Z'),*(1..9)].shuffle[0,8].join
+    
+    #test to see if slug has been taken, if so, recreate slug
+    
+    if Url.where(slug:slug).blank?
+      params['url']['slug'] = slug
+      @url = Url.new(url_params)
+    else
+      
+      params['url']['slug'] = slug
+      @url = Url.new(url_params)
+    end
     respond_to do |format|
       if @url.save
+        format.html { redirect_to @url, notice: 'Url was successfully created.' }
+      else
+        format.html { render :new }
+      end
+    end
+  end
+  
+  def update
+    
+    #check to see if http:// was added to url, if not, add it
+    params['url']['url'].match(/\Ahttps?:\/\//) ? true : params['url']['url'] = "http://" + params['url']['url']
+    
+    #create slug with random 8 length string for url
+    #and add that to the end if the base url
+    slug = "#{request.base_url}/" + [*('a'..'z'),*('A'..'Z'),*(1..9)].shuffle[0,8].join
+    
+    #test to see if slug has been taken, if so, recreate slug
+    
+    if Url.where(slug:slug).blank?
+      params['url']['slug'] = slug
+    else
+      slug = "#{request.base_url}/" + [*('a'..'z'),*('A'..'Z'),*(1..9)].shuffle[0,8].join
+      params['url']['slug'] = slug
+    end
+    respond_to do |format|
+      if @url.update(url_params)
         format.html { redirect_to @url, notice: 'Url was successfully created.' }
       else
         format.html { render :new }

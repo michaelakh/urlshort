@@ -3,7 +3,7 @@ class Url < ApplicationRecord
   REGEX = URI::regexp
   
   validates_presence_of :url
-  #validates_uniqueness_of :url
+  # validates_uniqueness_of :url
   validates_format_of :url, :with => REGEX
   
   validate :url_format
@@ -29,3 +29,4 @@ class Url < ApplicationRecord
     end
   end
 end
+ 
