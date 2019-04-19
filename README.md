@@ -33,24 +33,62 @@ requirements:
 ```console
 git clone https://github.com/michaelakh/urlshort.git
 ```
+2. Install Dependencies
 
-2. cd into the application directory and run
+* Rmagic
+* Postgresql
+
+If you have already installed Rmagic and Postgresql then skip this step
+For Rmagic
+
+``` console
+sudo apt-get install libmagickwand-dev
+```
+
+For Postgresql
+
+``` console
+sudo apt-get -y install postgresql postgresql-contrib libpq-dev
+sudo -u postgres psql postgres
+```
+In psql
+
+``` console 
+\password postgres
+```
+Enter the password you want
+
+After you're done, exit out of psql by doing the following
+
+``` console
+\q
+```
+
+Then create a user for psql to use
+
+``` console
+sudo -u postgres createuser --superuser $USER;
+```
+
+And that's it. If you have problems creating a postgresql database, try https://stackoverflow.com/questions/11919391/postgresql-error-fatal-role-username-does-not-exist
+
+3. cd into the application directory and run
 ```console
 bundle install
 bundle update
 ```
 
-3. Next, create the database in your postgresql database and migrate the database
+4. Next, create the database in your postgresql database and migrate the database
 ```console
 rake db:create db:migrate 
 ```
 
-4. Run tests via rspec
+5. Run tests via rspec
 ```console
 bundle exec rspec 
 ```
 
-5. Start up the server and view the website
+6. Start up the server and view the website
 
 ```console
 rails s

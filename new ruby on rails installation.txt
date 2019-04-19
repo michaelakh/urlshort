@@ -1,0 +1,5 @@
+Ruby with RVM, Bundler and Gems
+https://www.phusionpassenger.com/library/walkthroughs/deploy/ruby/ownserver/nginx/oss/install_language_runtime.html
+
+Postgresql installation
+https://www.howtoforge.com/tutorial/ruby-on-rails-ror-with-postgresql-on-ubuntu-16-04/
